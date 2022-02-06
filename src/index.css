@@ -2,10 +2,10 @@
 @import '~sanitize.css/forms.css';
 @import '~sanitize.css/typography.css';
 
-html,
+/* html,
 body {
   height: 100vh;
-}
+} */
 
 /* Do not render box for root div */
 .root {
