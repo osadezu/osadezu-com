@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Kalam:wght@300;400;700&family=Shadows+Into+Light&family=The+Girl+Next+Door&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Kalam:wght@300;400;700&family=Shadows+Into+Light&family=Quicksand:wght@400;600&display=swap');
 
 :root {
   /* Fonts */
@@ -7,17 +7,29 @@
   /* --heading-font: 'Kalam', cursive; */
   --heading-font: 'Shadows Into Light', cursive;
   /* --body-font: 'Kalam', cursive; */
-  /* --body-font: 'The Girl Next Door', cursive; */
-  --body-font: 'Shadows Into Light', cursive;
+  --body-font: 'Quicksand', sans-serif;
 
   /* Base size for 1rem */
-  font-size: 24px;
+  font-size: 20px;
 
   /* Colors */
   --base-bg-color: #cfd8dc;
   --nav-accent-color: #607d8b;
+  --shadow-color: dimgray;
+
+  /* Box apperance */
+  --main-shadow-blur: 0.2rem;
+  --main-shadow-offset: 0.2rem;
+  --ui-bottom-shadow: 0 0.1rem var(--main-shadow-blur) var(--shadow-color);
+  --ui-left-shadow: -0.1rem 0 var(--main-shadow-blur) var(--shadow-color);
+  --ui-right-shadow: 0.1rem 0 var(--main-shadow-blur) var(--shadow-color);
+  /* --ui-bottom-shadow: none;
+  --ui-left-shadow: none;
+  --ui-right-shadow: none; */
 
   /* Spacing */
+  --material-padding: 0.5em;
+  --compact-padding: 0.2em;
 
   /* Other */
   scroll-behavior: smooth;
@@ -36,16 +48,31 @@ h6 {
 }
 
 body {
-  background-color: var(--base-bg-color);
   font-family: var(--body-font);
+  background-color: var(--base-bg-color);
 }
 
 section {
   min-height: 100vh;
+  margin: 0 20%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  background-color: white;
+  box-shadow: var(--ui-left-shadow), var(--ui-right-shadow);
+  clip-path: inset(0 calc(var(--main-shadow-blur) * -1));
+}
+
+section.about {
+  min-height: 100vh;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--base-bg-color);
+  box-shadow: none;
 }
 
 section > .container {
@@ -61,6 +88,14 @@ section > .container {
   position: sticky;
   top: 0;
   bottom: 0;
+
+  z-index: 1;
+
+  clip-path: inset(0 0 calc(var(--main-shadow-blur) * -1) 0);
+  border: solid 0.1rem var(--nav-accent-color);
+  border-right: 0;
+  border-left: 0;
+  box-shadow: var(--ui-bottom-shadow);
 
   font-family: var(--heading-font);
 }
@@ -90,6 +125,33 @@ section > .container {
 
 .navigation .react-icons {
   margin-right: 0.25em;
+}
+
+.content-card {
+  padding: var(--material-padding);
+  border: solid 1px var(--nav-accent-color);
+  box-shadow: 1px 1px white, 0.2rem 0.2rem var(--nav-accent-color);
+}
+
+.skill-list {
+  display: flex;
+  flex-flow: row wrap;
+  gap: var(--material-padding);
+}
+
+.skill-list h3 {
+  width: 100%;
+  margin-top: var(--material-padding);
+  margin-bottom: 0;
+  font-family: var(--body-font);
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.skill {
+  margin: 0;
+  padding: var(--compact-padding) var(--material-padding);
+  font-size: smaller;
 }
 
 a {
