@@ -1,6 +1,6 @@
-function About() {
+function Oscar() {
   return (
-    <section className='about' id='about'>
+    <section id='oscar'>
       <div className='container'>
         <h1>Hola! I'm Óscar</h1>
         <p>
@@ -16,4 +16,4 @@ function About() {
   );
 }
 
-export default About;
+export default Oscar;

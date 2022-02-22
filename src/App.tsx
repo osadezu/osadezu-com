@@ -1,6 +1,6 @@
 import { IconContext } from 'react-icons';
 
-import About from './components/About';
+import Oscar from './components/Oscar';
 import Contact from './components/Contact';
 import Links from './components/Links';
 import Navigation from './components/Navigation';
@@ -11,9 +11,9 @@ import './App.css';
 
 function App() {
   return (
-    <div className="App">
+    <div className='App'>
       <IconContext.Provider value={{ className: 'react-icons' }}>
-        <About />
+        <Oscar />
         <Navigation />
         <Skills />
         <Projects />

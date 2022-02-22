@@ -71,7 +71,7 @@ const osdz_skills: SkillType[] = [
 
 function Skills() {
   return (
-    <section className='skills' id='skills'>
+    <section className='vscroll' id='skills'>
       <div className='container'>
         <h2>Óscar comes equipped with the following features!</h2>
         <div className='skill-list'>
