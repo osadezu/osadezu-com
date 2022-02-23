@@ -31,7 +31,7 @@
   --main-margin: 3em;
   --material-padding: 1em;
   --compact-padding: 0.5em;
-  --compact-padding: 0.2em;
+  --inline-padding: 0.2em;
 
   /* Other */
   scroll-behavior: smooth;
@@ -96,7 +96,7 @@ section.slides {
   display: flex;
   padding: var(--main-margin);
   gap: var(--main-margin);
-  overflow: scroll;
+  overflow-x: scroll;
   /* align-items: stretch; */
 }
 
@@ -137,31 +137,28 @@ section.slides {
   color: var(--nav-accent-color);
 }
 
-.navigation li.current {
+.navigation li:target {
   background-color: var(--nav-accent-color);
   color: white;
-}
-
-.navigation .react-icons {
-  margin-right: 0.25em;
 }
 
 .card {
   padding: var(--material-padding);
   border: solid 1px var(--nav-accent-color);
-  box-shadow: 1px 1px white, 0.2rem 0.2rem var(--nav-accent-color);
+  border-radius: 0.25em;
+  box-shadow: 1px 1px white, 0.35em 0.35em 0.35em var(--nav-accent-color);
+  font-size: smaller;
 }
 
 .skill-list {
   display: flex;
   flex-flow: row wrap;
-  gap: var(--material-padding);
+  gap: var(--inline-padding);
 }
 
 .skill-list h3 {
   width: 100%;
-  margin-top: var(--material-padding);
-  margin-bottom: 0;
+  margin-top: var(--compact-padding);
   font-family: var(--body-font);
   font-weight: 600;
   white-space: nowrap;
@@ -169,13 +166,14 @@ section.slides {
 
 .skill {
   margin: 0;
-  padding: var(--compact-padding) var(--material-padding);
-  font-size: smaller;
+  padding: var(--inline-padding);
+  box-shadow: none;
+  /* box-shadow: 1px 1px white, 0.2em 0.2em 0.2em var(--nav-accent-color); */
+  line-height: 1.15;
 }
 
 .project {
   flex: 0 0 40%;
-
   display: grid;
   grid-template-rows: auto auto auto;
   grid-template-columns: auto auto;
@@ -193,6 +191,7 @@ section.slides {
 .project > h3 {
   grid-area: name;
   margin: 0;
+  font-size: larger;
 }
 
 .project > .links {
@@ -200,10 +199,6 @@ section.slides {
   justify-self: end;
   display: flex;
   gap: var(--compact-padding);
-}
-
-.project svg {
-  margin-right: var(--inline-padding);
 }
 
 .project > img {
@@ -215,6 +210,21 @@ section.slides {
 .project > .blurb {
   grid-area: blurb;
   margin: 0;
+}
+
+a.w-icon {
+  flex: 0 0 auto;
+  display: inline-flex;
+  /* align-items: center; */
+  gap: var(--inline-padding);
+}
+
+a .react-icons {
+  margin-right: var(--inline-padding);
+}
+
+.react-icons {
+  align-self: center;
 }
 
 a {

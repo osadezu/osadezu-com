@@ -1,13 +1,13 @@
 import Skill from './Skill';
 
 export interface SkillType {
-  skillType: string;
+  skillDomain: string;
   skillList: string[];
 }
 
 const osdz_skills: SkillType[] = [
   {
-    skillType: 'Languages / Frameworks',
+    skillDomain: 'Languages / Frameworks',
     skillList: [
       'JavaScript',
       'TypeScript',
@@ -24,7 +24,7 @@ const osdz_skills: SkillType[] = [
     ],
   },
   {
-    skillType: 'Dev Tools',
+    skillDomain: 'Dev Tools',
     skillList: [
       'Git Source Control',
       'Command Line/Shell',
@@ -36,7 +36,7 @@ const osdz_skills: SkillType[] = [
     ],
   },
   {
-    skillType: 'Methodologies',
+    skillDomain: 'Methodologies',
     skillList: [
       'Object-oriented programming',
       'MVC pattern',
@@ -47,7 +47,7 @@ const osdz_skills: SkillType[] = [
     ],
   },
   {
-    skillType: 'Embedded Systems',
+    skillDomain: 'Embedded Systems',
     skillList: [
       'MCU programming',
       'ARM Cortex-M',
@@ -58,7 +58,7 @@ const osdz_skills: SkillType[] = [
     ],
   },
   {
-    skillType: 'Electronics Lab',
+    skillDomain: 'Electronics Lab',
     skillList: [
       'Breadboard circuit prototyping',
       'sensor/peripheral interfacing',

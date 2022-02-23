@@ -5,31 +5,31 @@ function Navigation() {
     <nav className='navigation'>
       <ul>
         <li className='current'>
-          <a href='#oscar'>
+          <a className='w-icon' href='#oscar'>
             <FiUser />
             Óscar
           </a>
         </li>
         <li>
-          <a href='#projects'>
-            <FiCpu />
-            Projects
-          </a>
-        </li>
-        <li>
-          <a href='#skills'>
+          <a className='w-icon' href='#skills'>
             <FiTool />
             Toolkit
           </a>
         </li>
         <li>
-          <a href='#links'>
+          <a className='w-icon' href='#projects'>
+            <FiCpu />
+            Projects
+          </a>
+        </li>
+        <li>
+          <a className='w-icon' href='#links'>
             <FiLink />
             Find Me
           </a>
         </li>
         <li>
-          <a href='#contact'>
+          <a className='w-icon' href='#contact'>
             <FiMessageCircle />
             Get In Touch
           </a>
