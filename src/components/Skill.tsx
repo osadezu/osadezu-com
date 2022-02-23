@@ -1,17 +1,19 @@
 import { SkillType } from './Skills';
 
-function Skill({ skill }: { skill: SkillType }) {
+function Skill({
+  skill,
+  filtered,
+}: {
+  skill: SkillType;
+  filtered: string | null;
+}) {
   return (
-    <>
-      <h3>{skill.skillDomain}</h3>
-      {skill.skillList.map((e, i) => {
-        return (
-          <div key={i} className='skill card'>
-            {e}
-          </div>
-        );
-      })}
-    </>
+    <div
+      className={`skill card${
+        filtered && skill.tags.includes(filtered) ? ` filtered ${filtered}` : ''
+      }`}>
+      {skill.skillName}
+    </div>
   );
 }
 
