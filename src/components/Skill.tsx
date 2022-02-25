@@ -10,7 +10,9 @@ function Skill({
   return (
     <div
       className={`skill card${
-        filtered && skill.tags.includes(filtered) ? ` filtered ${filtered}` : ''
+        filtered && skill.tags.includes(filtered)
+          ? ` filtered ${filtered} ${skill.classes.join(' ')}`
+          : ' unfiltered'
       }`}>
       {skill.skillName}
     </div>

@@ -1,13 +1,13 @@
 import { IconContext } from 'react-icons';
 
+import './styles/App.css';
+
 import Oscar from './components/Oscar';
-import Contact from './components/Contact';
+import Resume from './components/Resume';
 import Links from './components/Links';
 import Navigation from './components/Navigation';
 import Projects from './components/Projects';
 import Skills from './components/Skills';
-
-import './App.css';
 
 function App() {
   return (
@@ -18,7 +18,7 @@ function App() {
         <Skills />
         <Projects />
         <Links />
-        <Contact />
+        <Resume />
       </IconContext.Provider>
     </div>
   );

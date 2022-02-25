@@ -1,11 +1,4 @@
-import { link } from 'fs';
-import {
-  FiGithub,
-  FiLinkedin,
-  FiTwitter,
-  FiMail,
-  FiPhone,
-} from 'react-icons/fi';
+import { FiGithub, FiLinkedin, FiTwitter, FiMail } from 'react-icons/fi';
 
 export interface LinkType {
   url: string;
@@ -43,8 +36,8 @@ const osdz_links: LinkType[] = [
 
 function Links() {
   return (
-    <section className='vscroll' id='links'>
-      <div className='container'>
+    <section id='links'>
+      <div className='container centered'>
         <h2>Find me around the web:</h2>
         <ul>
           {osdz_links.map((el, i) => (

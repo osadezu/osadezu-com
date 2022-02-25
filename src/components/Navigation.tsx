@@ -1,4 +1,4 @@
-import { FiUser, FiTool, FiCpu, FiLink, FiMessageCircle } from 'react-icons/fi';
+import { FiUser, FiTool, FiCpu, FiLink, FiFileText } from 'react-icons/fi';
 
 function Navigation() {
   return (
@@ -29,9 +29,9 @@ function Navigation() {
           </a>
         </li>
         <li>
-          <a className='w-icon' href='#contact'>
-            <FiMessageCircle />
-            Get In Touch
+          <a className='w-icon' href='#resume'>
+            <FiFileText />
+            Resume
           </a>
         </li>
       </ul>

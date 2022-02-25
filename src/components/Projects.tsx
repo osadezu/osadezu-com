@@ -45,8 +45,8 @@ const osdz_projects: ProjectType[] = [
 
 function Projects() {
   return (
-    <section className='slides' id='projects'>
-      <div className='wrapper'>
+    <section id='projects'>
+      <div className='container'>
         {osdz_projects.map((project, i) => (
           <Project key={i} project={project} />
         ))}
