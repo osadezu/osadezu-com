@@ -84,6 +84,11 @@ const osdzSkills: SkillType[] = [
     classes: [],
   },
   {
+    skillName: 'pipenv',
+    tags: ['dev'],
+    classes: [],
+  },
+  {
     skillName: 'SQL',
     tags: ['be', 'db', 'lang'],
     classes: [],
@@ -134,23 +139,23 @@ const osdzSkills: SkillType[] = [
     classes: ['par'],
   },
   {
-    skillName: 'delegation pattern',
+    skillName: 'Delegation pattern',
     tags: ['lang'],
     classes: ['par'],
   },
   {
-    skillName: 'test-driven development',
-    tags: ['dev'],
+    skillName: 'Test-driven development',
+    tags: ['dev', 'lang'],
     classes: ['par'],
   },
   {
-    skillName: 'user stories',
+    skillName: 'User stories',
     tags: ['pm'],
     classes: [],
   },
   {
     skillName: 'Agile/Scrum',
-    tags: ['dev', 'pm'],
+    tags: ['pm'],
     classes: [],
   },
   {
@@ -189,22 +194,22 @@ const osdzSkills: SkillType[] = [
     classes: [],
   },
   {
-    skillName: 'sensor/peripheral interfacing',
+    skillName: 'Sensor/peripheral interfacing',
     tags: ['embed'],
     classes: [],
   },
   {
-    skillName: 'oscilloscope',
+    skillName: 'Oscilloscope',
     tags: ['embed'],
     classes: [],
   },
   {
-    skillName: 'logic analyzer',
+    skillName: 'Logic analyzer',
     tags: ['embed'],
     classes: [],
   },
   {
-    skillName: 'soldering',
+    skillName: 'Soldering',
     tags: ['embed'],
     classes: [],
   },
@@ -229,7 +234,11 @@ function Skills() {
         <h2>Óscar comes equipped with the following features!</h2>
         <div className='filters'>
           {filters.map((filter, i) => (
-            <button key={i} type='button' onClick={() => handleFilter(filter)}>
+            <button
+              key={i}
+              type='button'
+              onClick={() => handleFilter(filter)}
+              className={filtered === filter ? 'filtered' : 'unfiltered'}>
               {tagLabels.get(filter)}
             </button>
           ))}
@@ -245,8 +254,8 @@ function Skills() {
               filtered === 'lang' ? ' lang filtered' : ''
             }`}>
             {'let '}
-            <span>languages:</span>
-            {' codeType[] = ['}
+            <span>programming:</span>
+            {' languages[] = ['}
           </div>
           <div
             className={`skill acc lang-acc lang-acc-1${
@@ -259,8 +268,8 @@ function Skills() {
               filtered === 'lang' ? ' lang filtered' : ''
             }`}>
             {'let '}
-            <span>paradigms:</span>
-            {' codeType[] = ['}
+            <span>code:</span>
+            {' (pattern|paradigm)[] = ['}
           </div>
           <div
             className={`skill acc lang-acc lang-acc-3${

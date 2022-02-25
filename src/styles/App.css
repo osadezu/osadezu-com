@@ -14,16 +14,22 @@
   /* font-size: 20px; */
 
   /* Colors */
-  --base-bg-color: #cfd8dc;
-  --nav-accent-color: #607d8b;
-  --shadow-color: dimgray;
+  --main-text-color: black;
+  --blank-bg-color: #fafafa;
+  --base-bg-color: #c4edde;
+  --accent-bg-color: #7ac7c4;
+  --accent-color: #384259;
+  --text-accent-color: #f73859;
+  --shadow-color: var(--accent-color);
 
   /* Material */
-  --main-shadow-blur: 0.2rem;
-  --main-shadow-offset: 0.2rem;
-  --ui-bottom-shadow: 0 0.1rem var(--main-shadow-blur) var(--shadow-color);
-  --ui-left-shadow: -0.1rem 0 var(--main-shadow-blur) var(--shadow-color);
-  --ui-right-shadow: 0.1rem 0 var(--main-shadow-blur) var(--shadow-color);
+  /* --main-shadow-blur: 0.2rem; */
+  --main-shadow-blur: 0.2em;
+  --ui-bottom-shadow: 0 0.3rem var(--main-shadow-blur) var(--shadow-color);
+  --ui-left-shadow: -0.3rem 0 var(--main-shadow-blur) var(--shadow-color);
+  --ui-right-shadow: 0.3rem 0 var(--main-shadow-blur) var(--shadow-color);
+  /* --ui-left-shadow: none; */
+  /* --ui-right-shadow: none; */
 
   /* Spacing */
   --main-margin: 3rem;
@@ -42,13 +48,19 @@
 body {
   font-family: var(--body-font);
   background-color: var(--base-bg-color);
+  color: var(--main-text-color);
+}
+
+h1,
+h2,
+h3,
+h4 {
+  color: var(--text-accent-color);
 }
 
 h2,
 h3,
-h4,
-h5,
-h6 {
+h4 {
   font-family: var(--heading-font);
 }
 
@@ -63,7 +75,7 @@ h3 {
 .App {
   height: 100vh;
   overflow-y: auto;
-  /* scroll-snap-type: y proximity; */
+  scroll-snap-type: y proximity;
   scroll-behavior: smooth;
 }
 
@@ -77,11 +89,10 @@ section {
   justify-content: center;
   align-items: center;
 
-  background-color: white;
+  background-color: var(--blank-bg-color);
   box-shadow: var(--ui-left-shadow), var(--ui-right-shadow);
-  clip-path: inset(0 calc(var(--main-shadow-blur) * -1));
 
-  /* scroll-snap-align: start; */
+  scroll-snap-align: start;
   scroll-margin-top: 6vh;
 }
 
@@ -132,7 +143,6 @@ section {
 .navigation {
   height: 6vh;
   width: 100%;
-  background-color: white;
   position: -webkit-sticky;
   position: sticky;
   top: 0;
@@ -142,17 +152,16 @@ section {
   display: flex;
   align-items: center;
 
-  border: solid 0.1rem var(--nav-accent-color);
+  background-color: var(--accent-bg-color);
+  border: solid 0.1rem var(--accent-color);
   border-right: 0;
   border-left: 0;
   box-shadow: var(--ui-bottom-shadow);
-  /* Clip shadow to show only on bottom */
-  clip-path: inset(0 0 calc(var(--main-shadow-blur) * -1) 0);
 
   font-family: var(--heading-font);
   font-size: 1.5em;
   font-weight: bold;
-  color: var(--nav-accent-color);
+  color: var(--accent-color);
 }
 
 .navigation ul {
@@ -169,7 +178,7 @@ section {
 
 .card {
   padding: var(--material-padding);
-  border: solid 1px var(--nav-accent-color);
+  border: solid 1px var(--accent-color);
   border-radius: var(--material-radius);
   box-shadow: 0.35em 0.35em 0.35em var(--shadow-color);
 }
@@ -180,9 +189,9 @@ section {
   min-height: auto;
   max-width: none;
 
-  /* scroll-snap-align: center;
-  scroll-margin-top: unset; */
-  scroll-margin-top: 20vh;
+  scroll-snap-align: center;
+  scroll-margin-top: unset;
+  /* scroll-margin-top: 25vh; */
 }
 
 #projects .container {
@@ -199,7 +208,7 @@ section {
 }
 
 .project {
-  flex: 0 0 40%;
+  flex: 0 0 30%;
   display: grid;
   grid-template-rows: auto auto auto;
   grid-template-columns: auto auto;
@@ -255,7 +264,7 @@ section {
 }
 
 .about a {
-  color: var(--nav-accent-color);
+  color: var(--text-accent-color);
 }
 
 .react-icons {
@@ -299,6 +308,7 @@ button:hover {
   box-shadow: #d6d6e7 0 -3px 0 inset;
 }
 
+button.filtered,
 button:active {
   box-shadow: #d6d6e7 0 3px 7px inset;
   transform: translateY(2px);

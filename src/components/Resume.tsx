@@ -21,7 +21,7 @@ function Resume() {
           </p>
           <p>
             The styling is caringly handcrafted CSS using{' '}
-            <a href='https://fonts.google.com/'>Google Fonts</a> and using{' '}
+            <a href='https://fonts.google.com/'>Google Fonts</a> and{' '}
             <a href='https://feathericons.com/'>Feather</a> icons.
           </p>
         </div>

@@ -97,7 +97,7 @@
   width: 100%;
   display: initial;
   margin-left: calc((-1 * var(--main-margin)) + var(--material-padding));
-  color: var(--nav-accent-color);
+  color: var(--accent-color);
 }
 .skill.acc.lang-acc.filtered.lang span {
   color: blue;
@@ -121,29 +121,6 @@
   display: none;
 }
 
-/* Framweworks Cards */
-.skill.fw {
-  padding: var(--inline-padding) var(--compact-padding);
-  border: 2px dashed red;
-  display: flex;
-  align-items: center;
-  gap: var(--inline-padding);
-}
-.skill.fw::before {
-  content: url(../../public/images/fi-settings-fw.svg);
-  height: 24px;
-  width: 24px;
-  animation: spin 7s linear infinite;
-}
-@keyframes spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
 /* Dev Tools Cards */
 .skill.filtered.dev {
   padding-top: var(--inline-padding);
@@ -165,6 +142,7 @@
 }
 .skill.filtered.dev::after {
   content: '▁';
+  margin-right: var(--inline-padding);
   animation: 1.35s blink step-end infinite;
 }
 @keyframes blink {
@@ -176,3 +154,49 @@
     color: black;
   }
 }
+
+/* Framweworks Cards */
+.skill.fw {
+  padding: var(--inline-padding) var(--compact-padding);
+  border: 2px dashed var(--text-accent-color);
+  display: flex;
+  align-items: center;
+  gap: var(--inline-padding);
+}
+.skill.fw::before {
+  content: url(../../public/images/fi-settings-fw.svg);
+  height: 24px;
+  width: 24px;
+  animation: spin 7s linear infinite;
+}
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Embedded Cards */
+.skill.embed {
+  padding: var(--inline-padding) var(--compact-padding);
+  border: 4px double var(--text-accent-color);
+  display: flex;
+  align-items: center;
+  gap: var(--inline-padding);
+}
+/* .skill.embed::before {
+  content: url(../../public/images/fi-settings-fw.svg);
+  height: 24px;
+  width: 24px;
+  animation: spin 7s linear infinite;
+}
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+} */

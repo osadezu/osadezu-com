@@ -6,13 +6,13 @@ function Project({ project }: { project: ProjectType }) {
     <div className='project card'>
       <h3>{project.name}</h3>
       <div className='links'>
-        <a href={project.deployed}>
-          <FiArrowUpRight />
+        <a href={project.deployed} className='w-icon'>
           Live
+          <FiArrowUpRight />
         </a>
-        <a href={project.github}>
-          <FiGithub />
+        <a href={project.github} className='w-icon'>
           GitHub
+          <FiGithub />
         </a>
       </div>
       <img
