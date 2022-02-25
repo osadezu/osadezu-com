@@ -1,4 +1,4 @@
-# osadezu.com
+# [osadezu.com](https://osadezu.com/)
 
 A personal page to showcase my portfolio and other thoughts[^allergy].
 
