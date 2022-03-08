@@ -243,6 +243,7 @@ section {
 .project > h3,
 .project > .links {
   align-self: baseline;
+  white-space: nowrap;
 }
 
 .project > h3 {
