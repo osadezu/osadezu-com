@@ -1,3 +1,4 @@
+import { useEffect, useRef } from 'react';
 import Project from './Project';
 
 export interface ProjectType {
@@ -59,9 +60,40 @@ const osdz_projects: ProjectType[] = [
 ];
 
 function Projects() {
+  const scrollingDiv = useRef(document.createElement('div'));
+
+  useEffect(() => {
+    const instance = scrollingDiv.current;
+    instance.addEventListener('wheel', handleScroll, { passive: false });
+    return () => {
+      instance.removeEventListener('wheel', handleScroll);
+    };
+  });
+
+  function handleScroll(e: WheelEvent) {
+    console.log(e.deltaX, e.deltaY);
+    // Allow default behavior if native horizontal scroll
+    if (Math.abs(e.deltaX) > Math.abs(e.deltaY) || Math.abs(e.deltaY) < 4)
+      return;
+
+    e.preventDefault();
+    const container = document.getElementById('projects-container');
+    const containerScrollPosition =
+      document.getElementById('projects-container')!.scrollLeft;
+    container!.scrollTo({
+      top: 0,
+      left: containerScrollPosition + e.deltaY,
+      behavior: 'smooth',
+    });
+  }
+
   return (
     <section id='projects'>
-      <div className='container wide'>
+      <div
+        id='projects-container'
+        className='container wide'
+        // onWheel={handleScroll}
+        ref={scrollingDiv}>
         {osdz_projects.map((project, i) => (
           <Project key={i} project={project} />
         ))}
