@@ -9,8 +9,8 @@ export interface LinkType {
 
 const osdz_links: LinkType[] = [
   {
-    url: 'https://www.linkedin.com/in/osadezu/',
-    display: 'linkedin.com/in/osadezu/',
+    url: 'https://www.linkedin.com/in/osadezu',
+    display: 'linkedin.com/in/osadezu',
     name: 'LinkedIn',
     icon: <FiLinkedin />,
   },
