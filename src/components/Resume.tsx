@@ -3,7 +3,7 @@ import { FiFileText } from 'react-icons/fi';
 function Resume() {
   return (
     <section id='resume'>
-      <div className='container centered'>
+      <div className='container'>
         <h2>
           Download my resume{' '}
           <a href='https://www.dropbox.com/s/8jb21oy88j5bhwz/OSdZ_Resume.pdf?dl=1'>

@@ -41,12 +41,23 @@ const osdz_projects: ProjectType[] = [
     deployed: 'https://fabulous-fred.osadezu.com/',
     github: 'https://github.com/osadezu/fabulous-fred',
   },
+  {
+    name: 'Fabulous Fred',
+    blurb:
+      'A memory game inspired by the ultimate electronic game from the 1980s.',
+    description:
+      'A memory game inspired by the ultimate electronic game from the 1980s. The game is played in the same way as Simon Says, where the computer lights up a random sequence of buttons that the user has to repeat by memory. The sequence keeps getting longer until the user presses the wrong button.',
+    image_url:
+      'https://github.com/osadezu/fabulous-fred/raw/main/planning/screenshots/fabulous-fred-screenshot-01.png',
+    deployed: 'https://fabulous-fred.osadezu.com/',
+    github: 'https://github.com/osadezu/fabulous-fred',
+  },
 ];
 
 function Projects() {
   return (
     <section id='projects'>
-      <div className='container'>
+      <div className='container wide'>
         {osdz_projects.map((project, i) => (
           <Project key={i} project={project} />
         ))}

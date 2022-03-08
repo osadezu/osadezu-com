@@ -37,7 +37,7 @@ const osdz_links: LinkType[] = [
 function Links() {
   return (
     <section id='links'>
-      <div className='container centered'>
+      <div className='container'>
         <h2>Find me around the web:</h2>
         <ul>
           {osdz_links.map((el, i) => (
