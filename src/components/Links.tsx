@@ -38,7 +38,7 @@ function Links() {
   return (
     <section id='links'>
       <div className='container'>
-        <h2>Find me around the web:</h2>
+        <h2>Find me online:</h2>
         <ul>
           {osdz_links.map((el, i) => (
             <li key={i}>

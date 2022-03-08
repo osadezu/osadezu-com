@@ -7,31 +7,31 @@ function Navigation() {
         <li className='current'>
           <a className='w-icon' href='#oscar'>
             <FiUser />
-            Óscar
+            <span className='nav-text'>Óscar</span>
           </a>
         </li>
         <li>
           <a className='w-icon' href='#skills'>
             <FiTool />
-            Toolkit
+            <span className='nav-text'>Toolkit</span>
           </a>
         </li>
         <li>
           <a className='w-icon' href='#projects'>
             <FiCpu />
-            Projects
+            <span className='nav-text'>Projects</span>
           </a>
         </li>
         <li>
           <a className='w-icon' href='#links'>
             <FiLink />
-            Find Me
+            <span className='nav-text'>Find Me</span>
           </a>
         </li>
         <li>
           <a className='w-icon' href='#resume'>
             <FiFileText />
-            Resume
+            <span className='nav-text'>Resume</span>
           </a>
         </li>
       </ul>

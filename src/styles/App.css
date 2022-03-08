@@ -138,13 +138,16 @@ section {
 
 #oscar h1 {
   width: 100%;
-  padding: 0 var(--main-margin);
+  padding-left: var(--main-margin);
   font-family: var(--greeting-font);
   font-size: 3em;
+
+  white-space: nowrap;
 
   /* To center the paragraph, ignoring h1 height */
   position: absolute;
   top: calc(-1 * var(--section-gap));
+  left: 0;
 }
 
 #oscar p {
@@ -386,5 +389,8 @@ button:active {
   transform: translateY(2px);
 }
 
-@media only screen and (max-width: 960px) {
+@media only screen and (max-width: 500px) {
+  .navigation li:not(.current) span {
+    display: none;
+  }
 }

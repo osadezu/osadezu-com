@@ -5,9 +5,9 @@ function Resume() {
     <section id='resume'>
       <div className='container'>
         <h2>
-          Download my resume{' '}
+          Download my{' '}
           <a href='https://www.dropbox.com/s/8jb21oy88j5bhwz/OSdZ_Resume.pdf?dl=1'>
-            here
+            resume
             <FiFileText />
           </a>
         </h2>
