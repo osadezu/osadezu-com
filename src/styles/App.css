@@ -10,9 +10,6 @@
   --body-font: 'Quicksand', sans-serif;
   --code-font: 'Courier Prime', 'Courier New', monospace;
 
-  /* Base size for 1rem */
-  /* font-size: 20px; */
-
   /* Colors */
   --main-text-color: black;
   --blank-bg-color: #fafafa;
@@ -33,10 +30,12 @@
 
   /* Spacing */
   --main-margin: 3rem;
-  --section-gap: 3rem;
+  --section-gap: 2rem;
   --material-padding: 1rem;
   --compact-padding: 0.5rem;
   --inline-padding: 0.2rem;
+
+  --width-centering-wrapper: 800px;
 
   /* Corners */
   --material-radius: 0.25rem;
@@ -45,10 +44,21 @@
   scroll-behavior: smooth;
 }
 
+html {
+  background-color: var(--base-bg-color);
+}
+
 body {
   font-family: var(--body-font);
-  background-color: var(--base-bg-color);
   color: var(--main-text-color);
+
+  /* For centering wrapper *appearance* */
+  height: 100vh;
+  width: 100%;
+  max-width: var(--width-centering-wrapper);
+  margin: 0 auto;
+  background-color: var(--blank-bg-color);
+  box-shadow: var(--ui-left-shadow), var(--ui-right-shadow);
 }
 
 h1,
@@ -73,15 +83,21 @@ h3 {
 }
 
 .App {
-  height: 100vh;
+  /* height: 100%; */
+  /* width: 100vw; */
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  overflow-x: hidden;
   overflow-y: auto;
   scroll-snap-type: y proximity;
   scroll-behavior: smooth;
 }
 
 section {
-  min-height: 94vh;
-  max-width: 800px;
+  min-height: calc(100% - 55px);
   margin: 0 auto;
 
   display: flex;
@@ -89,26 +105,22 @@ section {
   justify-content: center;
   align-items: center;
 
-  background-color: var(--blank-bg-color);
-  box-shadow: var(--ui-left-shadow), var(--ui-right-shadow);
-
   scroll-snap-align: start;
-  scroll-margin-top: 6vh;
+  scroll-margin-top: 55px;
 }
 
 .container {
-  max-width: 800px;
   padding: var(--main-margin);
 }
-.container.centered {
+.container:not(.wide) {
+  max-width: var(--width-centering-wrapper);
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: var(--section-gap);
+  gap: var(--main-margin);
 }
 
 #oscar {
-  height: 94vh;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
@@ -119,20 +131,20 @@ section {
 }
 
 #oscar .container {
+  /* Extra margin to protect the position: absolute h1 */
+  margin: var(--section-gap) 0;
   position: relative;
-
-  /* Extra margin to protect the absolutely positioned h1 */
-  margin-top: var(--main-margin);
-  margin-bottom: var(--main-margin);
 }
 
 #oscar h1 {
+  width: 100%;
+  padding: 0 var(--main-margin);
   font-family: var(--greeting-font);
   font-size: 3em;
 
   /* To center the paragraph, ignoring h1 height */
   position: absolute;
-  top: calc(-1 * var(--main-margin));
+  top: calc(-1 * var(--section-gap));
 }
 
 #oscar p {
@@ -141,7 +153,7 @@ section {
 }
 
 .navigation {
-  height: 6vh;
+  height: 55px;
   width: 100%;
   position: -webkit-sticky;
   position: sticky;
@@ -186,29 +198,33 @@ section {
 #projects {
   width: 100%;
   margin: 0;
-  min-height: auto;
+
+  /* Override section defaults */
   max-width: none;
 
-  scroll-snap-align: center;
-  scroll-margin-top: unset;
-  /* scroll-margin-top: 25vh; */
+  /* scroll-snap-align: center;
+  scroll-margin-top: unset; */
+  background-color: transparent;
 }
 
 #projects .container {
-  height: 100%;
-  max-width: none;
-  padding: var(--main-margin);
+  height: min-content;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+
   display: flex;
   flex-direction: row;
-  gap: var(--main-margin);
 
-  /* Scroll horizontally with default mouse direction */
   overflow-x: auto;
-  /* transform: rotate(-90deg); */
+  overflow-y: hidden;
+  background-color: var(--blank-bg-color);
 }
 
 .project {
-  flex: 0 0 30%;
+  flex: 1 0 350px;
+
+  margin: var(--main-margin);
   display: grid;
   grid-template-rows: auto auto auto;
   grid-template-columns: auto auto;
@@ -216,9 +232,9 @@ section {
     'name links'
     'image image'
     'blurb blurb';
-
-  /* Scroll horizontally with default mouse direction */
-  /* transform: rotate(90deg); */
+}
+.project:not(:last-child) {
+  margin-right: 0;
 }
 
 .project > h3,
@@ -274,7 +290,7 @@ section {
 a.w-icon {
   flex: 0 0 auto;
   display: inline-flex;
-  gap: var(--compact-padding);
+  gap: var(--inline-padding);
 }
 
 a {
