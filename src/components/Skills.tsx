@@ -232,8 +232,8 @@ function Skills() {
     <section id='skills'>
       <div className='container'>
         <h2>
-          Oscar&nbsp;comes&nbsp;equipped
-          with&nbsp;the&nbsp;following&nbsp;features!
+          <span>Oscar comes equipped with </span>
+          <span>the following features!</span>
         </h2>
         <div className='filters'>
           {filters.map((filter, i) => (

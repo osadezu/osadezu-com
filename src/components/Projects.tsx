@@ -88,10 +88,13 @@ function Projects() {
 
   return (
     <section id='projects'>
+      <h2 className='rebel-h2'>
+        <span>These are some of my </span>
+        <span>full-stack projects</span>
+      </h2>
       <div
         id='projects-container'
         className='container wide'
-        // onWheel={handleScroll}
         ref={scrollingDiv}>
         {osdz_projects.map((project, i) => (
           <Project key={i} project={project} />
