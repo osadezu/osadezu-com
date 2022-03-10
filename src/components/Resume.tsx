@@ -15,13 +15,15 @@ function Resume() {
           <h2>About osadezu.com</h2>
           <p>
             This website is written in{' '}
-            <a href='https://www.typescriptlang.org/'>TypeScript</a> using{' '}
+            <a href='https://www.typescriptlang.org/'>TypeScript</a> using
+            <br />
             <a href='https://reactjs.org/'>React.js</a> and hosted on{' '}
             <a href='https://pages.github.com/'>Github Pages</a>.
           </p>
           <p>
-            The styling is caringly handcrafted CSS using{' '}
-            <a href='https://fonts.google.com/'>Google Fonts</a> and{' '}
+            The styling is caringly handcrafted CSS
+            <br />
+            using <a href='https://fonts.google.com/'>Google Fonts</a> and{' '}
             <a href='https://feathericons.com/'>Feather</a> icons.
           </p>
         </div>

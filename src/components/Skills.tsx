@@ -231,7 +231,10 @@ function Skills() {
   return (
     <section id='skills'>
       <div className='container'>
-        <h2>Óscar comes equipped with the following features!</h2>
+        <h2>
+          Oscar&nbsp;comes&nbsp;equipped
+          with&nbsp;the&nbsp;following&nbsp;features!
+        </h2>
         <div className='filters'>
           {filters.map((filter, i) => (
             <button
