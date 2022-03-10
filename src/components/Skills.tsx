@@ -221,7 +221,7 @@ function Skills() {
   const filters = [...Array.from(tagLabels.keys())];
 
   function handleFilter(filter: string) {
-    console.log(filtered, filter);
+    // console.log(filtered, filter);
     if (filtered === filter) {
       // If filter is set, clear it
       setFiltered('');
