@@ -71,7 +71,6 @@ function Projects() {
   });
 
   function handleScroll(e: WheelEvent) {
-    console.log(e.deltaX, e.deltaY);
     // Allow default behavior if native horizontal scroll
     if (Math.abs(e.deltaX) > Math.abs(e.deltaY) || Math.abs(e.deltaY) < 4)
       return;

@@ -236,10 +236,6 @@ section {
   border-left: 0;
 }
 
-/* #projects .container::-webkit-scrollbar {
-  display: none;
-} */
-
 /* Fix missing side margins in Safari */
 #projects .container::before,
 #projects .container::after {
