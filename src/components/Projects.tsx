@@ -32,7 +32,7 @@ const osdz_projects: ProjectType[] = [
   {
     name: 'Fabulous Fred',
     blurb:
-      'A memory game inspired by the ultimate electronic game from the 1980s.',
+      'A memory game inspired by the ultimate electronic toy from the 1980s.',
     description:
       'Fabulous Fred is written purely in Javascript, HTML and CSS. The game is played in the same way as Simon Says, where the computer lights up a random sequence of buttons that the user has to repeat by memory. The sequence keeps getting longer until the user presses the wrong button.',
     image_url: './images/screen-fabulous-fred.png',

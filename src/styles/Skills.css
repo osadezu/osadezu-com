@@ -191,24 +191,20 @@
 }
 
 /* Embedded Cards */
+
 .skill.embed {
   padding: var(--inline-padding) var(--compact-padding);
   border: 4px double var(--text-accent-color);
   display: flex;
   align-items: center;
   gap: var(--inline-padding);
+  animation: glow 5s 0.35s infinite ease-out;
 }
-/* .skill.embed::before {
-  content: url(../../public/images/fi-settings-fw.svg);
-  height: 24px;
-  width: 24px;
-  animation: spin 7s linear infinite;
+@keyframes glow {
+  50% {
+    border: 4px double transparent;
+  }
+  100% {
+    border: 4px double var(--text-accent-color);
+  }
 }
-@keyframes spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-} */
