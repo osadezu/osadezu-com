@@ -27,17 +27,18 @@
   display: none;
 }
 
-.skill.card {
+.skill {
   margin: 0;
   padding: 0;
   display: flex;
   align-items: baseline;
-  box-shadow: none;
+  border: solid 1px var(--accent-color);
+  border-radius: var(--material-radius);
   line-height: 1.1;
   font-size: smaller;
   transition: font-size 0.25s, border-color 1s;
 }
-.skill.card.unfiltered {
+.skill.unfiltered {
   padding: var(--inline-padding);
 }
 

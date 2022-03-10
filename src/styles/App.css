@@ -191,13 +191,6 @@ section {
   white-space: nowrap;
 }
 
-.card {
-  padding: var(--material-padding);
-  border: solid 1px var(--accent-color);
-  border-radius: var(--material-radius);
-  box-shadow: 0.35em 0.35em 0.35em var(--shadow-color);
-}
-
 #projects {
   width: 100%;
   margin: 0;
@@ -228,6 +221,8 @@ section {
   flex: 1 0 350px;
 
   margin: var(--main-margin);
+  padding: var(--material-padding);
+
   display: grid;
   grid-template-rows: auto auto auto;
   grid-template-columns: auto auto;
@@ -236,7 +231,6 @@ section {
     'image image'
     'blurb blurb';
 
-  padding: var(--material-padding);
   border: solid 1px var(--accent-color);
   border-radius: var(--material-radius);
   box-shadow: 0.25em 0.25em 0.35em var(--shadow-color);

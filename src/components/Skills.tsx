@@ -99,12 +99,12 @@ const osdzSkills: SkillType[] = [
     classes: [],
   },
   {
-    skillName: 'Git Source Control',
+    skillName: 'Git',
     tags: ['dev'],
     classes: [],
   },
   {
-    skillName: 'Command Line/Shell',
+    skillName: 'CLI/Shell',
     tags: ['dev'],
     classes: [],
   },
@@ -144,7 +144,7 @@ const osdzSkills: SkillType[] = [
     classes: ['par'],
   },
   {
-    skillName: 'Test-driven development',
+    skillName: 'TDD',
     tags: ['dev', 'lang'],
     classes: ['par'],
   },
