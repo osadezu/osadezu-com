@@ -18,6 +18,7 @@
   --accent-color: #384259;
   --text-accent-color: #f73859;
   --shadow-color: var(--accent-color);
+  --shadow-washed-color: hsla(222, 23%, 28%, 0.25);
 
   /* Material */
   /* --main-shadow-blur: 0.2rem; */
@@ -25,8 +26,7 @@
   --ui-bottom-shadow: 0 0.3rem var(--main-shadow-blur) var(--shadow-color);
   --ui-left-shadow: -0.3rem 0 var(--main-shadow-blur) var(--shadow-color);
   --ui-right-shadow: 0.3rem 0 var(--main-shadow-blur) var(--shadow-color);
-  /* --ui-left-shadow: none; */
-  /* --ui-right-shadow: none; */
+  --text-shadow: 0.02em 0.03em var(--accent-bg-color);
 
   /* Spacing */
   --main-margin: 3rem;
@@ -224,7 +224,7 @@ section {
   background-color: var(--blank-bg-color);
 }
 
-.project {
+.project-card {
   flex: 1 0 350px;
 
   margin: var(--main-margin);
@@ -235,37 +235,64 @@ section {
     'name links'
     'image image'
     'blurb blurb';
+
+  padding: var(--material-padding);
+  border: solid 1px var(--accent-color);
+  border-radius: var(--material-radius);
+  box-shadow: 0.25em 0.25em 0.35em var(--shadow-color);
+  transition: all 0.25s ease-out;
 }
-.project:not(:last-child) {
+.project-card:not(:last-child) {
   margin-right: 0;
 }
 
-.project > h3,
-.project > .links {
+.project-card:hover {
+  animation: amoeba 20s infinite;
+}
+@keyframes amoeba {
+  /* border-radius: 95% 4% 92% 5%/4% 95% 6% 95%; */
+  25% {
+    border-radius: 5% 5% 20% 5%/15% 40% 5% 40%;
+  }
+  45% {
+    border-radius: 30% 5% 20% 15%/5% 40% 5% 5%;
+  }
+  65% {
+    border-radius: 30% 15% 5% 15%/5% 5% 30% 5%;
+  }
+}
+
+.project-card:hover {
+  transform: scale(1.02);
+  box-shadow: 0.6em 0.6em 0.75em var(--shadow-washed-color);
+}
+
+.project-card > h3,
+.project-card > .links {
   align-self: baseline;
   white-space: nowrap;
 }
 
-.project > h3 {
+.project-card > h3 {
   grid-area: name;
   margin: 0;
 }
 
-.project > .links {
+.project-card > .links {
   grid-area: links;
   justify-self: end;
   display: flex;
   gap: var(--compact-padding);
 }
 
-.project > img {
+.project-card > img {
   grid-area: image;
   width: 100%;
   -o-object-fit: contain;
   object-fit: contain;
 }
 
-.project > .blurb {
+.project-card > .blurb {
   grid-area: blurb;
   margin: 0;
 }
@@ -289,6 +316,7 @@ section {
 
 .about a {
   color: var(--text-accent-color);
+  transition: color 0.2s ease-out;
 }
 
 .react-icons {
@@ -309,12 +337,20 @@ a {
   text-decoration: none;
   color: inherit;
   cursor: pointer;
-
-  text-underline-offset: 0.1em;
 }
 
-a:hover {
-  text-decoration: underline;
+a:not(.navigation a) {
+  transition: all 0.2s ease-out;
+}
+
+a:hover:not(.navigation a) {
+  color: var(--text-accent-color);
+}
+
+.about a:hover,
+h2 a:hover,
+h3 a:hover {
+  text-shadow: var(--text-shadow);
 }
 
 button {

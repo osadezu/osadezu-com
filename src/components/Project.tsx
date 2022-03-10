@@ -3,8 +3,10 @@ import { ProjectType } from './Projects';
 
 function Project({ project }: { project: ProjectType }) {
   return (
-    <div className='project card'>
-      <h3>{project.name}</h3>
+    <div className='project-card'>
+      <h3>
+        <a href={project.deployed}>{project.name}</a>
+      </h3>
       <div className='links'>
         <a href={project.deployed} className='w-icon'>
           Live
