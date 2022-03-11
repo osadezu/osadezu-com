@@ -147,6 +147,7 @@ h2.rebel-h2 {
   /* Extra margin to protect the position: absolute h1 */
   margin: var(--section-gap) 0;
   position: relative;
+  gap: var(--compact-padding);
 }
 
 #oscar h1 {

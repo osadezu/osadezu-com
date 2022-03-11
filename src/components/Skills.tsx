@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { FiFileText } from 'react-icons/fi';
 
 import Skill from './Skill';
 
@@ -54,6 +53,16 @@ const osdzSkills: SkillType[] = [
     classes: [],
   },
   {
+    skillName: 'Domain management',
+    tags: ['fe', 'dev'],
+    classes: [],
+  },
+  {
+    skillName: 'Online deployment',
+    tags: ['fe', 'dev'],
+    classes: [],
+  },
+  {
     skillName: 'Express.js',
     tags: ['be', 'fw'],
     classes: [],
@@ -97,6 +106,16 @@ const osdzSkills: SkillType[] = [
     skillName: 'C/C++',
     tags: ['be', 'lang', 'embed'],
     classes: [],
+  },
+  {
+    skillName: 'Computer science',
+    tags: ['be', 'dev'],
+    classes: [],
+  },
+  {
+    skillName: 'Data structures',
+    tags: ['be', 'lang'],
+    classes: ['par'],
   },
   {
     skillName: 'Git',
@@ -174,7 +193,12 @@ const osdzSkills: SkillType[] = [
     classes: [],
   },
   {
-    skillName: 'Serial protocols (SPI, I2C, UART)',
+    skillName: 'SPI, I2C, UART',
+    tags: ['embed'],
+    classes: [],
+  },
+  {
+    skillName: 'IoT',
     tags: ['embed'],
     classes: [],
   },
@@ -189,12 +213,12 @@ const osdzSkills: SkillType[] = [
     classes: [],
   },
   {
-    skillName: 'Breadboard circuit prototyping',
+    skillName: 'Breadboard prototyping',
     tags: ['embed'],
     classes: [],
   },
   {
-    skillName: 'Sensor/peripheral interfacing',
+    skillName: 'Sensor interfacing',
     tags: ['embed'],
     classes: [],
   },
