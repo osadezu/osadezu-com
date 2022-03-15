@@ -1,3 +1,5 @@
+import smoothscroll from 'smoothscroll-polyfill';
+
 import { IconContext } from 'react-icons';
 
 import './styles/App.css';
@@ -8,6 +10,9 @@ import Links from './components/Links';
 import Navigation from './components/Navigation';
 import Projects from './components/Projects';
 import Skills from './components/Skills';
+
+// Run polyfill
+smoothscroll.polyfill();
 
 function App() {
   return (
