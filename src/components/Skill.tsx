@@ -1,4 +1,4 @@
-import { SkillType } from './Skills';
+import { SkillType } from './content';
 
 function Skill({
   skill,

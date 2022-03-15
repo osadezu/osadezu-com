@@ -1,5 +1,5 @@
 import { FiGithub, FiArrowUpRight } from 'react-icons/fi';
-import { ProjectType } from './Projects';
+import { ProjectType } from './content';
 
 function Project({ project }: { project: ProjectType }) {
   return (

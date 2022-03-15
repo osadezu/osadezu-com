@@ -1,17 +1,12 @@
-import { useState } from 'react';
 import { FiUser, FiTool, FiCpu, FiLink, FiFileText } from 'react-icons/fi';
 
-function Navigation() {
-  const [section, setSection] = useState('oscar');
-
-  function handleScroll(e: React.MouseEvent, target: string) {
-    // e.preventDefault();
-    setSection(target);
-    // document
-    //   .querySelector(`#${target}`)
-    //   ?.scrollIntoView({ behavior: 'smooth' });
-  }
-
+function Navigation({
+  section,
+  handleScroll,
+}: {
+  section: string;
+  handleScroll: (e: React.MouseEvent, target: string) => void;
+}) {
   return (
     <nav className='navigation'>
       <ul>
