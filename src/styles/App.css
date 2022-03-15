@@ -95,7 +95,7 @@ h3 {
   left: 0;
   overflow-x: hidden;
   overflow-y: auto;
-  /* scroll-snap-type: y mandatory; */
+  scroll-snap-type: y mandatory;
   scroll-behavior: smooth;
 }
 
@@ -189,6 +189,7 @@ h2.rebel-h2 {
   font-family: var(--heading-font);
   font-size: 1.5em;
   font-weight: bold;
+  color: var(--blank-bg-color);
   color: var(--accent-color);
 }
 
@@ -220,6 +221,12 @@ h2.rebel-h2 {
   align-items: center;
   justify-content: center;
   white-space: nowrap;
+  transition: all 0.35s ease-in;
+}
+
+.navigation li.current {
+  /* background-color: var(--accent-color); */
+  color: var(--blank-bg-color);
 }
 
 #projects {
