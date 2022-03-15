@@ -33,6 +33,9 @@
   align-items: center;
   justify-content: center;
 }
+.skill-list.filtered {
+  row-gap: var(--inline-padding);
+}
 
 .skill.acc {
   display: none;
@@ -41,8 +44,6 @@
 .skill {
   margin: 0;
   padding: 0;
-  display: flex;
-  align-items: baseline;
   border: solid 1px var(--accent-color);
   border-radius: var(--material-radius);
   line-height: 1.1;
@@ -59,9 +60,6 @@
 }
 
 /* Front-End Cards */
-.skill-list.filtered.fe {
-  row-gap: var(--inline-padding);
-}
 .skill.filtered.fe {
   border-top: 14px solid white;
   border-right: 6px solid white;
@@ -70,6 +68,16 @@
   border-image-source: url(../../public/images/fi-layout-fe.svg);
   border-image-slice: 7 3 3 8;
   border-image-repeat: stretch;
+
+  /* text gradient */
+  background: linear-gradient(
+    90deg,
+    var(--text-accent-color),
+    var(--accent-color),
+    var(--accent-bg-color)
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 /* Back-End Cards */
@@ -94,6 +102,7 @@
   background-color: whitesmoke;
   padding: var(--material-padding);
   padding-left: var(--main-margin);
+  row-gap: var(--compact-padding);
 }
 .skill.filtered.lang {
   font-family: var(--code-font);
@@ -206,5 +215,11 @@
   }
   100% {
     border: 4px double var(--text-accent-color);
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .skill.filtered {
+    font-size: 1.05em;
   }
 }

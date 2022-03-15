@@ -194,7 +194,7 @@ h2.rebel-h2 {
 }
 
 .navigation {
-  animation: jump 0.5s 3s 3 cubic-bezier(0.65, 0.05, 0.36, 1);
+  animation: jump 0.35s 1s 3 cubic-bezier(0.65, 0.05, 0.36, 1);
 }
 @keyframes jump {
   25% {
@@ -221,11 +221,14 @@ h2.rebel-h2 {
   align-items: center;
   justify-content: center;
   white-space: nowrap;
-  transition: all 0.35s ease-in;
 }
 
-.navigation li.current {
-  /* background-color: var(--accent-color); */
+/* Safari chokes on a click if transition is slower than this */
+.navigation a {
+  transition: color 0.15s ease-out;
+}
+
+.navigation a:hover {
   color: var(--blank-bg-color);
 }
 
