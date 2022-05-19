@@ -23,7 +23,7 @@ function Skills() {
     <section id='skills'>
       <div className='container'>
         <h2>
-          <span>Oscar comes equipped with </span>
+          <span>Óscar comes equipped with </span>
           <span>the following features!</span>
         </h2>
         <div className='filters'>
