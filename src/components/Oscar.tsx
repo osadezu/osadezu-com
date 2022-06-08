@@ -14,8 +14,8 @@ function Oscar() {
           user experience.
         </p>
         <p>
-          I am a relentless maker and an inquisitive learner who is always
-          looking under the hood. I am passionate about smart lighting, embedded
+          I am a relentless maker and inquisitive learner who is always looking
+          under the hood, and am passionate about smart lighting, embedded
           systems, and the IoT.
         </p>
       </div>
