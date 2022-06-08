@@ -59,6 +59,11 @@
   border: none;
 }
 
+.filtered .skill.unfiltered {
+  color: #555555;
+  border: solid 1px #555555;
+}
+
 /* Front-End Cards */
 .skill.filtered.fe {
   border-top: 14px solid white;
@@ -70,12 +75,7 @@
   border-image-repeat: stretch;
 
   /* text gradient */
-  background: linear-gradient(
-    90deg,
-    var(--text-accent-color),
-    var(--accent-color),
-    var(--accent-bg-color)
-  );
+  background: var(--main-text-color);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -99,7 +99,6 @@
 /* Languages Cards */
 .skill-list.lang {
   justify-content: flex-start;
-  background-color: whitesmoke;
   padding: var(--material-padding);
   padding-left: var(--main-margin);
   row-gap: var(--compact-padding);
@@ -121,7 +120,7 @@
   color: var(--accent-color);
 }
 .skill.acc.lang-acc.filtered.lang span {
-  color: blue;
+  color: #bb86fc;
 }
 .skill.acc.lang-acc.filtered.lang::after {
   content: none;
@@ -203,17 +202,18 @@
 
 .skill.embed {
   padding: var(--inline-padding) var(--compact-padding);
-  border: 4px double var(--text-accent-color);
+  border: 4px double transparent;
   display: flex;
   align-items: center;
   gap: var(--inline-padding);
-  animation: glow 5s 0.35s infinite ease-out;
+  animation: glow 4s 0.35s infinite ease-out;
 }
 @keyframes glow {
-  50% {
+  to,
+  from {
     border: 4px double transparent;
   }
-  100% {
+  50% {
     border: 4px double var(--text-accent-color);
   }
 }

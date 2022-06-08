@@ -11,14 +11,13 @@
   --code-font: 'Courier Prime', 'Courier New', monospace;
 
   /* Colors */
-  --main-text-color: black;
-  --blank-bg-color: #fafafa;
-  --base-bg-color: #c4edde;
-  --accent-bg-color: #7ac7c4;
-  --accent-color: #384259;
-  --text-accent-color: #f73859;
-  --shadow-color: var(--accent-color);
-  --shadow-washed-color: hsla(222, 23%, 28%, 0.4);
+  --base-bg-color: #121212;
+  --surface-bg-color: #222222;
+  --main-text-color: #eeeeee;
+  --text-accent-color: hsl(350, 90%, 65%);
+  --accent-color: #03dac6;
+  --shadow-color: #333333;
+  --shadow-washed-color: hsl(174, 60%, 25%);
 
   /* Material */
   /* --main-shadow-blur: 0.2rem; */
@@ -26,7 +25,7 @@
   --ui-bottom-shadow: 0 0.3rem var(--main-shadow-blur) var(--shadow-color);
   --ui-left-shadow: -0.3rem 0 var(--main-shadow-blur) var(--shadow-color);
   --ui-right-shadow: 0.3rem 0 var(--main-shadow-blur) var(--shadow-color);
-  --text-shadow: 0.02em 0.03em var(--accent-bg-color);
+  --text-shadow: 0.02em 0.03em var(--text-accent-color);
 
   /* Spacing */
   --main-margin: 3rem;
@@ -57,7 +56,7 @@ body {
   width: 100%;
   max-width: var(--width-centering-wrapper);
   margin: 0 auto;
-  background-color: var(--blank-bg-color);
+  background-color: var(--surface-bg-color);
   box-shadow: var(--ui-left-shadow), var(--ui-right-shadow);
 }
 
@@ -94,9 +93,17 @@ h3 {
   bottom: 0;
   left: 0;
   overflow-x: hidden;
-  overflow-y: auto;
+  overflow-y: overlay;
   scroll-snap-type: y proximity;
   scroll-behavior: smooth;
+}
+
+.App::-webkit-scrollbar {
+  width: 0.75em;
+  background-color: transparent;
+}
+.App::-webkit-scrollbar-thumb {
+  background: #444444;
 }
 
 section {
@@ -180,7 +187,7 @@ h2.rebel-h2 {
 
   display: flex;
 
-  background-color: var(--accent-bg-color);
+  background-color: var(--surface-bg-color);
   border: solid 0.1rem var(--accent-color);
   border-right: 0;
   border-left: 0;
@@ -189,7 +196,7 @@ h2.rebel-h2 {
   font-family: var(--heading-font);
   font-size: 1.5em;
   font-weight: bold;
-  color: var(--blank-bg-color);
+  color: var(--surface-bg-color);
   color: var(--accent-color);
 }
 
@@ -224,12 +231,12 @@ h2.rebel-h2 {
 }
 
 /* Safari chokes on a click if transition is slower than this */
-.navigation a {
+a.nav-link {
   transition: color 0.15s ease-out;
 }
 
-.navigation a:hover {
-  color: var(--blank-bg-color);
+a.nav-link:hover {
+  color: var(--main-text-color);
 }
 
 #projects {
@@ -250,11 +257,15 @@ h2.rebel-h2 {
 
   overflow-x: auto;
   overflow-y: hidden;
-  background-color: var(--blank-bg-color);
+  background-color: var(--surface-bg-color);
 
   border: solid 1px var(--accent-color);
   border-right: 0;
   border-left: 0;
+}
+
+#projects .container::-webkit-scrollbar {
+  display: none;
 }
 
 /* Fix missing side margins in Safari */
@@ -279,7 +290,7 @@ h2.rebel-h2 {
 
   border: solid 1px var(--accent-color);
   border-radius: var(--material-radius);
-  background-color: var(--blank-bg-color);
+  background-color: var(--surface-bg-color);
   box-shadow: 0.25em 0.25em 0.35em var(--shadow-color);
   transition: all 0.25s ease-out;
 }
@@ -359,7 +370,6 @@ h2.rebel-h2 {
 
 .about a {
   color: var(--text-accent-color);
-  transition: color 0.2s ease-out;
 }
 
 .react-icons {
@@ -382,24 +392,25 @@ a {
   cursor: pointer;
 }
 
-a:not(.navigation a) {
+a {
   transition: all 0.2s ease-out;
 }
 
-a:hover:not(.navigation a) {
-  color: var(--text-accent-color);
+a:hover {
+  color: var(--accent-color);
 }
 
 .about a:hover,
 h2 a:hover,
 h3 a:hover {
   text-shadow: var(--text-shadow);
+  color: var(--text-accent-color);
 }
 
 button {
   cursor: pointer;
   border-radius: var(--material-radius);
-  background-color: var(--blank-bg-color);
+  background-color: var(--surface-bg-color);
   box-shadow: #d6d6e7 0 3px 0;
   transition: background-color 0.4s ease-in, color 0.2s ease-out;
 }
@@ -410,9 +421,10 @@ button:hover {
 
 button.filtered,
 button:active {
-  box-shadow: #d6d6e7 0 3px 7px inset;
+  box-shadow: #676767 0 3px 7px inset;
   transform: translateY(2px);
   background-color: var(--base-bg-color);
+  color: var(--accent-color);
 }
 
 /********************
