@@ -116,6 +116,11 @@ export const osdzSkills: SkillType[] = [
     classes: [],
   },
   {
+    skillName: 'Material UI',
+    tags: ['fe'],
+    classes: [],
+  },
+  {
     skillName: 'npm',
     tags: ['dev'],
     classes: [],
@@ -149,6 +154,11 @@ export const osdzSkills: SkillType[] = [
     skillName: 'Computer science',
     tags: ['be', 'dev'],
     classes: [],
+  },
+  {
+    skillName: 'Algorithms',
+    tags: ['be', 'lang'],
+    classes: ['par'],
   },
   {
     skillName: 'Data structures',
@@ -197,8 +207,8 @@ export const osdzSkills: SkillType[] = [
   },
   {
     skillName: 'Delegation pattern',
-    tags: ['lang'],
-    classes: ['par'],
+    tags: [],
+    classes: [],
   },
   {
     skillName: 'TDD',

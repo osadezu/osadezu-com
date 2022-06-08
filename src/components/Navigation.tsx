@@ -5,31 +5,31 @@ function Navigation() {
     <nav className='navigation'>
       <ul>
         <li>
-          <a className='w-icon' href='#oscar'>
+          <a className='nav-link w-icon' href='#oscar'>
             <FiUser />
             <span className='nav-text'>Óscar</span>
           </a>
         </li>
         <li>
-          <a className='w-icon' href='#skills'>
+          <a className='nav-link w-icon' href='#skills'>
             <FiTool />
             <span className='nav-text'>Skills</span>
           </a>
         </li>
         <li>
-          <a className='w-icon' href='#projects'>
+          <a className='nav-link w-icon' href='#projects'>
             <FiCpu />
             <span className='nav-text'>Projects</span>
           </a>
         </li>
         <li>
-          <a className='w-icon' href='#links'>
+          <a className='nav-link w-icon' href='#links'>
             <FiLink />
             <span className='nav-text'>Find Me</span>
           </a>
         </li>
         <li>
-          <a className='w-icon' href='#resume'>
+          <a className='nav-link w-icon' href='#resume'>
             <FiFileText />
             <span className='nav-text'>Resume</span>
           </a>
