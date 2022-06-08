@@ -291,7 +291,7 @@ a.nav-link:hover {
   border: solid 1px var(--accent-color);
   border-radius: var(--material-radius);
   background-color: var(--surface-bg-color);
-  box-shadow: 0.25em 0.25em 0.35em var(--shadow-color);
+  box-shadow: 0.35em 0.35em 0.25em var(--shadow-washed-color);
   transition: all 0.25s ease-out;
 }
 
