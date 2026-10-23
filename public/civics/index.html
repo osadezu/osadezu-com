@@ -18,48 +18,52 @@
    Type is a system stack on purpose — no webfont request, so a cold offline launch renders identically. */
 :root{
   --bg:#eceff3; --surface:#ffffff; --surface-2:#f5f7fa;
-  --ink:#141d29; --ink-soft:#56616f; --ink-faint:#8b95a3;
+  --ink:#141d29; --ink-soft:#47525f; --ink-faint:#626d7b;
   --rule:#d3dae2; --rule-strong:#b9c3ce;
-  --accent:#1f3d7a; --accent-soft:#e3e9f6; --accent-ink:#ffffff;
-  --star:#8a6314; --star-soft:#f4ead5;
-  --good:#1c6a46; --good-soft:#dff0e6;
-  --flag:#8d3a2e; --flag-soft:#f6e4e1;
+  --accent:#1b3a73; --accent-soft:#e3e9f6; --accent-ink:#ffffff;
+  --star:#7a5610; --star-soft:#f4ead5;
+  --good:#14553a; --good-soft:#dcefe4;
+  --flag:#733024; --flag-soft:#f6e4e1;
   --display:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
   --body:Charter,"Iowan Old Style",Georgia,Cambria,"Times New Roman",serif;
   --mono:ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,"Liberation Mono",monospace;
   --shadow:0 1px 2px rgba(20,29,41,.06),0 8px 24px rgba(20,29,41,.07);
+  /* five type sizes, nothing else */
+  --fs-micro:.75rem; --fs-ui:.875rem; --fs-body:1.125rem; --fs-q:1.5rem; --fs-num:1.75rem;
   color-scheme:light;
   padding-top:env(safe-area-inset-top,0px);
   padding-bottom:env(safe-area-inset-bottom,0px);
 }
 @media (prefers-color-scheme:dark){ :root:not([data-theme="light"]){
   --bg:#10141b; --surface:#1a212c; --surface-2:#141a23;
-  --ink:#e7ebf1; --ink-soft:#9ba6b4; --ink-faint:#6c7785;
+  --ink:#e7ebf1; --ink-soft:#b3bdc9; --ink-faint:#8d98a7;
   --rule:#2a3441; --rule-strong:#3a4654;
-  --accent:#93b2f2; --accent-soft:#1d2737; --accent-ink:#10141b;
-  --star:#d8ae5e; --star-soft:#2a2417;
-  --good:#63c694; --good-soft:#15291f;
-  --flag:#e08977; --flag-soft:#2c1d1a;
+  --accent:#a8c1f6; --accent-soft:#1d2737; --accent-ink:#10141b;
+  --star:#e8c379; --star-soft:#2a2417;
+  --good:#7ed6a8; --good-soft:#15291f;
+  --flag:#ef9e8c; --flag-soft:#2c1d1a;
   --shadow:0 1px 2px rgba(0,0,0,.4),0 10px 28px rgba(0,0,0,.35);
   color-scheme:dark;
 }}
 :root[data-theme="dark"]{
   --bg:#10141b; --surface:#1a212c; --surface-2:#141a23;
-  --ink:#e7ebf1; --ink-soft:#9ba6b4; --ink-faint:#6c7785;
+  --ink:#e7ebf1; --ink-soft:#b3bdc9; --ink-faint:#8d98a7;
   --rule:#2a3441; --rule-strong:#3a4654;
-  --accent:#93b2f2; --accent-soft:#1d2737; --accent-ink:#10141b;
-  --star:#d8ae5e; --star-soft:#2a2417;
-  --good:#63c694; --good-soft:#15291f;
-  --flag:#e08977; --flag-soft:#2c1d1a;
+  --accent:#a8c1f6; --accent-soft:#1d2737; --accent-ink:#10141b;
+  --star:#e8c379; --star-soft:#2a2417;
+  --good:#7ed6a8; --good-soft:#15291f;
+  --flag:#ef9e8c; --flag-soft:#2c1d1a;
   --shadow:0 1px 2px rgba(0,0,0,.4),0 10px 28px rgba(0,0,0,.35);
   color-scheme:dark;
 }
 
 *{box-sizing:border-box}
 html,body{margin:0}
+/* No double-tap zoom on controls; pinch zoom stays available. */
+button,select,input{touch-action:manipulation}
 img{max-width:100%}
 [hidden]{display:none!important}
-body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:14px;line-height:1.5;-webkit-text-size-adjust:100%}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:var(--fs-body);line-height:1.5;-webkit-text-size-adjust:100%}
 body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:20;background:var(--surface)}
 
 .wrap{max-width:44rem;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
@@ -67,22 +71,22 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 .bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:15;background:var(--surface);border-bottom:1px solid var(--rule)}
 .bar-in{display:flex;flex-direction:column;gap:10px;padding-block:10px 12px}
 .bar-top{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
-.mark{font-family:var(--display);font-weight:800;font-size:1.02rem;letter-spacing:-.01em}
+.mark{font-family:var(--display);font-weight:800;font-size:var(--fs-body);letter-spacing:-.01em}
 .mark span{color:var(--accent)}
-.src{font-family:var(--mono);font-size:.68rem;color:var(--ink-faint);letter-spacing:.02em}
+.src{font-family:var(--mono);font-size:var(--fs-micro);color:var(--ink-faint);letter-spacing:.02em}
 .spacer{flex:1 1 auto}
-.ghost{font-family:var(--mono);font-size:.7rem;text-transform:uppercase;letter-spacing:.07em;color:var(--ink-soft);background:none;border:1px solid var(--rule);border-radius:3px;padding:4px 8px;cursor:pointer}
+.ghost{font-family:var(--mono);font-size:var(--fs-ui);text-transform:uppercase;letter-spacing:.07em;color:var(--ink-soft);background:none;border:1px solid var(--rule);border-radius:3px;padding:5px 9px;cursor:pointer}
 .ghost:hover{border-color:var(--rule-strong);color:var(--ink)}
 
 .controls{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
-select,.seg{font-family:var(--mono);font-size:.74rem}
+select,.seg{font-family:var(--mono);font-size:var(--fs-ui)}
 select{background:var(--surface-2);color:var(--ink);border:1px solid var(--rule);border-radius:3px;padding:6px 8px;max-width:100%;min-width:0;flex:1 1 11rem}
 .seg{display:inline-flex;border:1px solid var(--rule);border-radius:3px;overflow:hidden}
 .seg button{font:inherit;background:var(--surface-2);color:var(--ink-soft);border:0;padding:6px 10px;cursor:pointer;letter-spacing:.04em}
 .seg button+button{border-left:1px solid var(--rule)}
 .seg button[aria-pressed="true"]{background:var(--accent);color:var(--accent-ink)}
 
-.meter{display:flex;align-items:center;gap:10px;font-family:var(--mono);font-size:.68rem;color:var(--ink-soft)}
+.meter{display:flex;align-items:center;gap:10px;font-family:var(--mono);font-size:var(--fs-micro);color:var(--ink-soft)}
 .track{flex:1 1 auto;min-width:0;height:4px;background:var(--rule);border-radius:2px;overflow:hidden}
 .fill{height:100%;width:0;background:var(--good);transition:width .25s ease}
 .tally{white-space:nowrap;font-variant-numeric:tabular-nums}
@@ -90,50 +94,52 @@ select{background:var(--surface-2);color:var(--ink);border:1px solid var(--rule)
 main{padding-block:18px 28px}
 .card{background:var(--surface);border:1px solid var(--rule);border-radius:4px;box-shadow:var(--shadow);overflow:hidden}
 .card-head{display:flex;gap:12px;align-items:flex-start;padding:14px 16px;border-bottom:1px solid var(--rule);background:var(--surface-2)}
-.num{font-family:var(--mono);font-weight:600;font-size:1.5rem;line-height:1;color:var(--accent);font-variant-numeric:tabular-nums}
-.head-meta{min-width:0;flex:1 1 auto;display:flex;flex-direction:column;gap:5px}
-.crumb{font-family:var(--mono);font-size:.66rem;letter-spacing:.07em;text-transform:uppercase;color:var(--ink-faint)}
-.badges{display:flex;gap:6px;flex-wrap:wrap}
-.badge{font-family:var(--mono);font-size:.62rem;letter-spacing:.06em;text-transform:uppercase;padding:3px 6px;border-radius:2px;border:1px solid transparent}
-.b-star{background:var(--star-soft);color:var(--star);border-color:var(--star)}
-.b-flag{background:var(--flag-soft);color:var(--flag);border-color:var(--flag)}
-.b-you{background:var(--accent-soft);color:var(--accent);border-color:var(--accent)}
-.b-done{background:var(--good-soft);color:var(--good);border-color:var(--good)}
+.num{font-family:var(--mono);font-weight:600;font-size:var(--fs-num);line-height:1;color:var(--accent);font-variant-numeric:tabular-nums}
+.head-meta{min-width:0;flex:1 1 auto;display:flex;flex-direction:column;gap:6px}
+.crumb{font-family:var(--mono);font-size:var(--fs-micro);letter-spacing:.07em;text-transform:uppercase;color:var(--ink-faint)}
+.badges{display:flex;gap:6px;flex-wrap:wrap;align-items:center}
+.badge{font-family:var(--mono);font-size:var(--fs-micro);letter-spacing:.06em;text-transform:uppercase;padding:3px 7px;border-radius:2px}
+.b-flag{background:var(--flag-soft);color:var(--flag)}
+.b-you{background:var(--accent-soft);color:var(--accent)}
+.b-done{background:var(--good-soft);color:var(--good)}
+/* The 20 questions marked with an asterisk in M-1778; the footer says what that means. */
+.star{color:var(--star);font-size:var(--fs-body);line-height:1}
 
-.q{font-family:var(--display);font-weight:700;font-size:1.38rem;line-height:1.26;letter-spacing:-.012em;text-wrap:balance;padding:20px 16px 18px;margin:0}
-@media (max-width:420px){ .q{font-size:1.2rem} }
+.q{font-family:var(--display);font-weight:700;font-size:var(--fs-q);line-height:1.26;letter-spacing:-.012em;text-wrap:balance;padding:20px 16px 18px;margin:0}
+@media (max-width:420px){ :root{--fs-q:1.3rem} }
 
 .reveal-wrap{padding:0 16px 18px}
-.reveal{width:100%;font-family:var(--mono);font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;background:var(--accent);color:var(--accent-ink);border:0;border-radius:3px;padding:12px;cursor:pointer}
+.reveal{width:100%;font-family:var(--mono);font-size:var(--fs-ui);letter-spacing:.08em;text-transform:uppercase;background:var(--accent);color:var(--accent-ink);border:0;border-radius:3px;padding:13px;cursor:pointer}
 .reveal:hover{filter:brightness(1.08)}
 
 .answers{border-top:1px solid var(--rule);padding:16px}
-.a-label{font-family:var(--mono);font-size:.66rem;letter-spacing:.07em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:10px}
+.a-label{font-family:var(--mono);font-size:var(--fs-micro);letter-spacing:.07em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:10px}
 ul.a-list{list-style:none;margin:0;padding:0;display:grid;gap:7px}
 ul.a-list.two{grid-template-columns:repeat(2,minmax(0,1fr))}
 @media (max-width:460px){ ul.a-list.two{grid-template-columns:1fr} }
 ul.a-list li{display:flex;gap:9px;align-items:baseline;min-width:0}
 ul.a-list li::before{content:"";flex:0 0 auto;width:5px;height:5px;margin-top:.45em;border-radius:1px;background:var(--accent)}
-.a-text{min-width:0;font-size:1.02rem}
-.note{margin-top:14px;padding-top:12px;border-top:1px dashed var(--rule);font-size:.88rem;color:var(--ink-soft);font-style:italic}
+.a-text{min-width:0}
+.note{margin-top:14px;padding-top:12px;border-top:1px dashed var(--rule);font-size:var(--fs-ui);color:var(--ink-soft);font-style:italic}
 
 .actions{display:flex;gap:8px;margin-top:14px}
-.act{flex:1 1 0;min-width:0;font-family:var(--mono);font-size:.72rem;letter-spacing:.05em;text-transform:uppercase;padding:11px 6px;border-radius:3px;border:1px solid var(--rule);background:var(--surface);color:var(--ink-soft);cursor:pointer}
+.act{flex:1 1 0;min-width:0;font-family:var(--mono);font-size:var(--fs-ui);letter-spacing:.05em;text-transform:uppercase;padding:12px 6px;border-radius:3px;border:1px solid var(--rule);background:var(--surface);color:var(--ink-soft);cursor:pointer}
 .act:hover{border-color:var(--rule-strong);color:var(--ink)}
 .act.on-good{background:var(--good-soft);border-color:var(--good);color:var(--good)}
 .act.on-flag{background:var(--flag-soft);border-color:var(--flag);color:var(--flag)}
 
 .nav{display:flex;gap:8px;align-items:center;margin-top:12px}
-.nav button{font-family:var(--mono);font-size:.76rem;padding:10px 14px;border-radius:3px;border:1px solid var(--rule);background:var(--surface);color:var(--ink);cursor:pointer}
-.nav button:disabled{opacity:.4;cursor:default}
-.pos{flex:1 1 auto;text-align:center;font-family:var(--mono);font-size:.72rem;color:var(--ink-soft);font-variant-numeric:tabular-nums}
+.nav button{font-family:var(--mono);font-size:var(--fs-ui);padding:11px 15px;border-radius:3px;border:1px solid var(--rule);background:var(--surface);color:var(--ink);cursor:pointer}
+.nav button:disabled{opacity:.45;cursor:default}
+.pos{flex:1 1 auto;text-align:center;font-family:var(--mono);font-size:var(--fs-ui);color:var(--ink-soft);font-variant-numeric:tabular-nums}
 
 .empty{background:var(--surface);border:1px dashed var(--rule);border-radius:4px;padding:28px 16px;text-align:center;color:var(--ink-soft)}
 
-.jump{display:flex;gap:8px;align-items:center;margin-top:16px;font-family:var(--mono);font-size:.72rem;color:var(--ink-soft);flex-wrap:wrap}
-.jump input{font-family:var(--mono);font-size:.78rem;width:5.5rem;background:var(--surface);color:var(--ink);border:1px solid var(--rule);border-radius:3px;padding:7px 8px}
+.jump{display:flex;gap:8px;align-items:center;margin-top:16px;font-family:var(--mono);font-size:var(--fs-ui);color:var(--ink-soft);flex-wrap:wrap}
+.jump input{font-family:var(--mono);font-size:var(--fs-ui);width:6rem;background:var(--surface);color:var(--ink);border:1px solid var(--rule);border-radius:3px;padding:8px}
 
-footer{margin-top:22px;padding-top:14px;border-top:1px solid var(--rule);font-family:var(--mono);font-size:.67rem;line-height:1.7;color:var(--ink-faint)}
+footer{margin-top:22px;padding-top:14px;border-top:1px solid var(--rule);font-family:var(--mono);font-size:var(--fs-micro);line-height:1.75;color:var(--ink-faint)}
+footer .star{font-size:var(--fs-ui)}
 footer a{color:var(--ink-soft)}
 kbd{font-family:var(--mono);font-size:.95em;border:1px solid var(--rule-strong);border-bottom-width:2px;border-radius:3px;padding:0 4px;color:var(--ink-soft)}
 :where(button,select,input):focus-visible{outline:2px solid var(--accent);outline-offset:2px}
@@ -172,6 +178,7 @@ kbd{font-family:var(--mono);font-size:.95em;border:1px solid var(--rule-strong);
   </div>
   <footer>
     <div>All 128 questions and every acceptable answer are taken verbatim from the USCIS source PDF, M-1778 (09/25). Four answers change with elections and appointments &mdash; check <a href="https://www.uscis.gov/citizenship/testupdates">uscis.gov/citizenship/testupdates</a> before your interview.</div>
+    <div style="margin-top:6px"><span class="star">&#9733;</span> marks the 20 questions starred in the official list. An applicant who is 65 or older and has been a permanent resident for 20 years or more may study only those, test in the language of their choice, and pass with 6 of 10.</div>
     <div style="margin-top:6px">Keys: <kbd>Space</kbd> reveal &middot; <kbd>&larr;</kbd> <kbd>&rarr;</kbd> move &middot; <kbd>K</kbd> know it &middot; <kbd>R</kbd> review</div>
   </footer>
 </main>
@@ -236,7 +243,7 @@ function render(){
   }
   const q = current();
   const b = [];
-  if (q.starred) b.push(badge('b-star', '★ 65/20'));
+  if (q.starred) b.push('<span class="star" role="img" aria-label="Starred in the official list (65/20 rule)" title="One of the 20 starred questions — see the note at the bottom">★</span>');
   if (CHANGES(q)) b.push(badge('b-flag', 'Answer changes'));
   if (VARIES(q)) b.push(badge('b-you', 'Your answer'));
   if (marks[q.id] === 'known') b.push(badge('b-done', 'Known'));
