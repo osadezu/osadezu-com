@@ -140,6 +140,14 @@ ul.a-list li::before{content:"";flex:0 0 auto;width:5px;height:5px;margin-top:.4
 
 .empty{background:var(--surface);border:1px dashed var(--rule);border-radius:4px;padding:28px 16px;text-align:center;color:var(--ink-soft)}
 
+/* Standalone on iOS has no URL bar, so a new version has to announce itself. */
+.toast{position:fixed;left:0;right:0;bottom:0;z-index:30;display:flex;gap:12px;align-items:center;justify-content:center;flex-wrap:wrap;
+  background:var(--accent);color:var(--accent-ink);font-family:var(--mono);font-size:var(--fs-ui);
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));
+  padding-top:13px;padding-bottom:calc(13px + env(safe-area-inset-bottom,0px))}
+.toast button{font-family:var(--mono);font-size:var(--fs-ui);letter-spacing:.07em;text-transform:uppercase;
+  background:var(--accent-ink);color:var(--accent);border:0;border-radius:3px;padding:8px 14px;cursor:pointer}
+
 .jump{display:flex;gap:8px;align-items:center;margin-top:16px;font-family:var(--mono);font-size:var(--fs-ui);color:var(--ink-soft);flex-wrap:wrap}
 .jump input{font-family:var(--mono);font-size:var(--fs-ui);width:6rem;background:var(--surface);color:var(--ink);border:1px solid var(--rule);border-radius:3px;padding:8px}
 
@@ -161,6 +169,7 @@ kbd{font-family:var(--mono);font-size:.95em;border:1px solid var(--rule-strong);
     <div class="mark">Civics <span>128</span></div>
     <div class="src">M-1778 (09/25) &middot; 2025 version</div>
     <div class="spacer"></div>
+    <button class="ghost" id="reload" type="button" title="Reload the app">&#8635; Reload</button>
     <button class="ghost" id="theme" type="button">Theme</button>
   </div>
   <div class="controls">
@@ -365,9 +374,41 @@ document.addEventListener('keydown', e => {
 buildOrder(null);
 render();
 
+$('reload').onclick = () => location.reload();
+
+/* Update flow. In standalone there is no URL bar, so the page checks for a new
+   service worker on launch and whenever it comes back to the foreground, then
+   offers the reload itself. The worker calls skipWaiting(), so a new version
+   taking control fires controllerchange — that is the signal a reload will
+   show something different. */
 if ('serviceWorker' in navigator) {
+  let offered = false;
+  /* On a first-ever visit the page starts uncontrolled and clients.claim()
+     fires controllerchange once. That is the install, not an update, so
+     swallow it; every change after it is a genuinely new version. */
+  let seenFirstClaim = !!navigator.serviceWorker.controller;
+  navigator.serviceWorker.addEventListener('controllerchange', () => {
+    if (!seenFirstClaim) { seenFirstClaim = true; return; }
+    if (offered || !document.getElementById('stage')) return;
+    offered = true;
+    const t = document.createElement('div');
+    t.className = 'toast';
+    t.innerHTML = '<span>A new version is ready.</span>'
+      + '<button type="button" id="doReload">Reload</button>'
+      + '<button type="button" id="dismissUpdate">Later</button>';
+    document.body.appendChild(t);
+    document.getElementById('doReload').onclick = () => location.reload();
+    document.getElementById('dismissUpdate').onclick = () => t.remove();
+  });
+
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('sw.js').catch(() => {});
+    navigator.serviceWorker.register('sw.js').then(reg => {
+      const check = () => { reg.update().catch(() => {}); };
+      check();
+      document.addEventListener('visibilitychange', () => {
+        if (document.visibilityState === 'visible') check();
+      });
+    }).catch(() => {});
   });
 }
 </script>

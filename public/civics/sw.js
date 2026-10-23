@@ -1,6 +1,6 @@
 /* Civics 128 — offline precache.
    Bump CACHE when any precached file changes, or clients keep serving the old copy. */
-const CACHE = 'civics-128-v3';
+const CACHE = 'civics-128-v4';
 const ASSETS = [
   './',
   './index.html',
