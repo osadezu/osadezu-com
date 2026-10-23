@@ -92,7 +92,15 @@ select{background:var(--surface-2);color:var(--ink);border:1px solid var(--rule)
 .tally{white-space:nowrap;font-variant-numeric:tabular-nums}
 
 main{padding-block:18px 28px}
-.card{background:var(--surface);border:1px solid var(--rule);border-radius:4px;box-shadow:var(--shadow);overflow:hidden}
+/* Fixed height so the buttons below never move when answers are revealed;
+   anything taller scrolls inside .card-body. */
+.card{background:var(--surface);border:1px solid var(--rule);border-radius:4px;box-shadow:var(--shadow);overflow:hidden;
+      display:flex;flex-direction:column;height:min(62vh,34rem);min-height:20rem;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.card:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.card-head,.q{flex:0 0 auto}
+.card-body{flex:1 1 auto;min-height:0;overflow-y:auto;-webkit-overflow-scrolling:touch;border-top:1px solid var(--rule)}
+.hint{height:100%;display:flex;align-items:center;justify-content:center;padding:16px;text-align:center;
+      font-family:var(--mono);font-size:var(--fs-ui);letter-spacing:.06em;text-transform:uppercase;color:var(--ink-faint)}
 .card-head{display:flex;gap:12px;align-items:flex-start;padding:14px 16px;border-bottom:1px solid var(--rule);background:var(--surface-2)}
 .num{font-family:var(--mono);font-weight:600;font-size:var(--fs-num);line-height:1;color:var(--accent);font-variant-numeric:tabular-nums}
 .head-meta{min-width:0;flex:1 1 auto;display:flex;flex-direction:column;gap:6px}
@@ -108,11 +116,7 @@ main{padding-block:18px 28px}
 .q{font-family:var(--display);font-weight:700;font-size:var(--fs-q);line-height:1.26;letter-spacing:-.012em;text-wrap:balance;padding:20px 16px 18px;margin:0}
 @media (max-width:420px){ :root{--fs-q:1.3rem} }
 
-.reveal-wrap{padding:0 16px 18px}
-.reveal{width:100%;font-family:var(--mono);font-size:var(--fs-ui);letter-spacing:.08em;text-transform:uppercase;background:var(--accent);color:var(--accent-ink);border:0;border-radius:3px;padding:13px;cursor:pointer}
-.reveal:hover{filter:brightness(1.08)}
-
-.answers{border-top:1px solid var(--rule);padding:16px}
+.answers{padding:16px}
 .a-label{font-family:var(--mono);font-size:var(--fs-micro);letter-spacing:.07em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:10px}
 ul.a-list{list-style:none;margin:0;padding:0;display:grid;gap:7px}
 ul.a-list.two{grid-template-columns:repeat(2,minmax(0,1fr))}
@@ -120,6 +124,7 @@ ul.a-list.two{grid-template-columns:repeat(2,minmax(0,1fr))}
 ul.a-list li{display:flex;gap:9px;align-items:baseline;min-width:0}
 ul.a-list li::before{content:"";flex:0 0 auto;width:5px;height:5px;margin-top:.45em;border-radius:1px;background:var(--accent)}
 .a-text{min-width:0}
+.a-text a{color:var(--accent)}
 .note{margin-top:14px;padding-top:12px;border-top:1px dashed var(--rule);font-size:var(--fs-ui);color:var(--ink-soft);font-style:italic}
 
 .actions{display:flex;gap:8px;margin-top:14px}
@@ -141,6 +146,9 @@ ul.a-list li::before{content:"";flex:0 0 auto;width:5px;height:5px;margin-top:.4
 footer{margin-top:22px;padding-top:14px;border-top:1px solid var(--rule);font-family:var(--mono);font-size:var(--fs-micro);line-height:1.75;color:var(--ink-faint)}
 footer .star{font-size:var(--fs-ui)}
 footer a{color:var(--ink-soft)}
+footer summary{cursor:pointer;letter-spacing:.07em;text-transform:uppercase;color:var(--ink-soft);padding:2px 0;touch-action:manipulation}
+footer details[open] summary{margin-bottom:8px}
+footer details>div:first-of-type{margin-top:0}
 kbd{font-family:var(--mono);font-size:.95em;border:1px solid var(--rule-strong);border-bottom-width:2px;border-radius:3px;padding:0 4px;color:var(--ink-soft)}
 :where(button,select,input):focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
@@ -177,9 +185,12 @@ kbd{font-family:var(--mono);font-size:.95em;border:1px solid var(--rule-strong);
     <button class="ghost" id="jumpgo" type="button">Go</button>
   </div>
   <footer>
+    <details>
+    <summary>About this deck</summary>
     <div>All 128 questions and every acceptable answer are taken verbatim from the USCIS source PDF, M-1778 (09/25). Four answers change with elections and appointments &mdash; check <a href="https://www.uscis.gov/citizenship/testupdates">uscis.gov/citizenship/testupdates</a> before your interview.</div>
     <div style="margin-top:6px"><span class="star">&#9733;</span> marks the 20 questions starred in the official list. An applicant who is 65 or older and has been a permanent resident for 20 years or more may study only those, test in the language of their choice, and pass with 6 of 10.</div>
-    <div style="margin-top:6px">Keys: <kbd>Space</kbd> reveal &middot; <kbd>&larr;</kbd> <kbd>&rarr;</kbd> move &middot; <kbd>K</kbd> know it &middot; <kbd>R</kbd> review</div>
+    <div style="margin-top:6px">Tap the card to reveal or hide the answers. Keys: <kbd>Space</kbd> reveal, then next &middot; <kbd>&larr;</kbd> <kbd>&rarr;</kbd> move &middot; <kbd>K</kbd> know it &middot; <kbd>R</kbd> review</div>
+    </details>
   </footer>
 </main>
 
@@ -235,6 +246,15 @@ function progress(){
 function badge(cls, text){ return '<span class="badge ' + cls + '">' + text + '</span>'; }
 function esc(s){ return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
 
+/* The only URL linked anywhere in a card is the one the PDF itself prints. */
+const UPDATES_URL = 'https://www.uscis.gov/citizenship/testupdates';
+function answerHtml(a){
+  return esc(a).replace(
+    'uscis.gov/citizenship/testupdates',
+    '<a href="' + UPDATES_URL + '" target="_blank" rel="noopener">uscis.gov/citizenship/testupdates</a>'
+  );
+}
+
 function render(){
   const stage = $('stage');
   if (!order.length){
@@ -250,21 +270,21 @@ function render(){
   if (marks[q.id] === 'review') b.push(badge('b-flag', 'Review'));
 
   const two = q.answers.length > 6;
-  const items = q.answers.map(a => '<li><span class="a-text">' + esc(a) + '</span></li>').join('');
-  const answerBlock = revealed
+  const items = q.answers.map(a => '<li><span class="a-text">' + answerHtml(a) + '</span></li>').join('');
+  const body = revealed
     ? '<div class="answers"><div class="a-label">Acceptable answers (' + q.answers.length + ')</div>'
       + '<ul class="a-list' + (two ? ' two' : '') + '">' + items + '</ul>'
       + (q.note ? '<div class="note">' + esc(q.note) + '</div>' : '')
       + '</div>'
-    : '<div class="reveal-wrap"><button class="reveal" type="button" id="revealBtn">Show answers</button></div>';
+    : '<div class="hint">Tap to reveal</div>';
 
   stage.innerHTML =
-    '<article class="card">'
+    '<article class="card" id="card" role="button" tabindex="0" aria-expanded="' + (revealed ? 'true' : 'false') + '">'
     + '<div class="card-head"><div class="num">' + q.id + '</div>'
     + '<div class="head-meta"><div class="crumb">' + esc(q.section) + ' · ' + esc(q.subsection) + '</div>'
     + (b.length ? '<div class="badges">' + b.join('') + '</div>' : '') + '</div></div>'
     + '<h1 class="q">' + esc(q.question) + '</h1>'
-    + answerBlock
+    + '<div class="card-body">' + body + '</div>'
     + '</article>'
     + '<div class="actions">'
     + '<button class="act' + (marks[q.id] === 'known' ? ' on-good' : '') + '" type="button" id="mk-known">Know it</button>'
@@ -274,7 +294,11 @@ function render(){
     + '<div class="pos">' + (idx + 1) + ' / ' + order.length + '</div>'
     + '<button type="button" id="next"' + (idx === order.length - 1 ? ' disabled' : '') + '>Next →</button></div>';
 
-  const rb = $('revealBtn'); if (rb) rb.onclick = () => { revealed = true; render(); };
+  const card = $('card');
+  card.onclick = e => { if (e.target.closest('a')) return; toggle(); };
+  /* Enter only — Space is handled globally below, so handling it here too
+     would fire twice when the card has focus. */
+  card.onkeydown = e => { if (e.key === 'Enter') { e.preventDefault(); toggle(); } };
   $('prev').onclick = () => step(-1);
   $('next').onclick = () => step(1);
   $('mk-known').onclick = () => mark('known');
@@ -282,17 +306,22 @@ function render(){
   progress();
 }
 
+function toggle(){ revealed = !revealed; render(); }
+
 function step(d){
   const n = idx + d;
   if (n < 0 || n >= order.length) return;
   idx = n; revealed = false; render();
 }
+
+/* Tapping an unset mark records it and moves on. Tapping the mark a card
+   already has clears it and stays put, so a mistake is correctable. */
 function mark(kind){
   const q = current(); if (!q) return;
-  marks[q.id] = marks[q.id] === kind ? undefined : kind;
-  if (!marks[q.id]) delete marks[q.id];
+  if (marks[q.id] === kind){ delete marks[q.id]; save(); render(); return; }
+  marks[q.id] = kind;
   save();
-  render();
+  if (idx < order.length - 1) step(1); else render();
 }
 
 deckSel.onchange = () => { deckId = deckSel.value; buildOrder(null); render(); };
